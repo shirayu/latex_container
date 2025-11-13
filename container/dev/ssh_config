@@ -1,0 +1,13 @@
+Host *
+    GSSAPIAuthentication no
+    HashKnownHosts no
+
+Host github
+    User git
+    HostName github.com
+    IdentityFile ~/.ssh/github
+
+Host github.com
+    User git
+    HostName github.com
+    IdentityFile ~/.ssh/github
