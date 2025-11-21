@@ -8,14 +8,15 @@ services:
     hostname: latex_container-dev
     userns_mode: keep-id
     volumes:
-      - latex_container-repo:/repo
       - latex_container-cache:/cache
       - latex_container-home:/home/appuser/
       - ${HOME}/.ssh/github:/config/ssh/github:ro
       - ${HOME}/.ssh/github.pub:/config/ssh/github.pub:ro
       - ${HOME}/.ssh/known_hosts:/config/ssh/known_hosts:ro
+      - ${HOME}/.cache/latex_container:/output:Z
     ports:
       - 5555:5555
+      - 5556:5556
     environment:
       - NODE_ENV=development
       - MISE_ENV=default
@@ -23,11 +24,10 @@ services:
       - LESSCHARSET=utf-8
     init: true
     stop_signal: SIGKILL
-    working_dir: /repo
+    working_dir: /home/appuser
     tty: true
     stdin_open: true
 
 volumes:
-  latex_container-repo:
   latex_container-cache:
   latex_container-home:
