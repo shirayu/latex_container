@@ -21,3 +21,4 @@ git clone git@github.com:shirayu/dotfiles.git ~/.dotfiles
 echo 'alias codex="codex --dangerously-bypass-approvals-and-sandbox"' >>~/.zshenv
 echo 'alias copilot="copilot --allow-all-tools"' >>~/.zshenv
 echo 'alias claude="claude --dangerously-skip-permissions"' >>~/.zshenv
+echo 'alias gemini="gemini --yolo"' >>~/.zshenv
