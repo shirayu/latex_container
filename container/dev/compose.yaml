@@ -13,7 +13,7 @@ services:
       - ${HOME}/.ssh/github:/config/ssh/github:ro
       - ${HOME}/.ssh/github.pub:/config/ssh/github.pub:ro
       - ${HOME}/.ssh/known_hosts:/config/ssh/known_hosts:ro
-      - ${HOME}/.cache/latex_container:/output:Z
+      - ${HOME}/.config/latex_container/output:/output:Z
     ports:
       - 5555:5555
       - 5556:5556
