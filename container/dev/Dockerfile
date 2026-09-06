@@ -75,17 +75,6 @@ RUN useradd -ms /bin/zsh appuser && \
     echo "appuser ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/appuser && \
     chmod 0440 /etc/sudoers.d/appuser
 
-# ---- Install mise via official apt repository ----
-# hadolint ignore=DL3008
-RUN install -d -m 755 /etc/apt/keyrings && \
-    curl -fsSL -o /tmp/mise.gpg https://mise.jdx.dev/gpg-key.pub && \
-    gpg --dearmor --batch --yes -o /etc/apt/keyrings/mise-archive-keyring.gpg /tmp/mise.gpg && \
-    rm /tmp/mise.gpg && \
-    chmod 644 /etc/apt/keyrings/mise-archive-keyring.gpg && \
-    echo "deb [signed-by=/etc/apt/keyrings/mise-archive-keyring.gpg arch=amd64] https://mise.jdx.dev/deb stable main" > /etc/apt/sources.list.d/mise.list && \
-    apt-get update && apt-get install -y --no-install-recommends mise && \
-    rm -rf /var/lib/apt/lists/*
-
 # ---- Configure global shell hook for mise ----
 RUN install -d -m 755 /etc/zsh/zshrc.d && \
     printf '%s\n' \
