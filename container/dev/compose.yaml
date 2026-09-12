@@ -7,6 +7,8 @@ services:
     container_name: latex_container-dev
     hostname: latex_container-dev
     userns_mode: keep-id
+    devices:
+      - nvidia.com/gpu=all
     volumes:
       - latex_container-cache:/cache
       - latex_container-home:/home/appuser/
